@@ -11,7 +11,7 @@ import javax.xml.stream.events.Comment;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.iu.home.util.DBConnection;
+//import com.iu.home.util.DBConnection;
 
 @Repository
 public class ProductDAO {
@@ -67,28 +67,7 @@ public class ProductDAO {
 //-------------------------------------------------------------------------------------
 	//getProductDetail
 	
-	public ProductDTO getproductDetail(ProductDTO productDTO) throws Exception {
-		Connection connection =DBConnection.getConnnection();
-		String sql = "SELECT * FROM PRODUCT WHERE PRODUCTNUM=?";
-		PreparedStatement st = connection.prepareStatement(sql);
-		
-		st.setLong(1, 0);
-		
-		ResultSet rs = st.executeQuery();
-		if(rs.next()) {
-			productDTO = new ProductDTO();
-			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
-			productDTO.setProductDetail(rs.getString("PRODUCTDETAIL"));
-			productDTO.setProductJumsu(rs.getDouble("PRODUCTJUMSU"));
-			productDTO.setProductName(rs.getString("PRODUCTNAME"));
-		}else {
-			productDTO = null;
-		}
-		DBConnection.disConnect(st, connection);
-		return productDTO;
 	
-		
-	}
 	
 	
 	
