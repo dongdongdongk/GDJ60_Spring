@@ -4,12 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.utill.DBConnection;
 
 @Repository
 public class MemeberDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	private final String NAMESPACE="com.iu.s1.member.MemberDAO.";
 	
 	public void memberJoin() { 
 		
@@ -23,23 +29,9 @@ public class MemeberDAO {
 	
 	
 	
-	public MemberDTO setAddMenber() throws Exception { 
-		Connection connection  = DBConnection.getConnection();
-		MemberDTO memberDTO = new MemberDTO();
+	public int setAddMenber(MemberDTO memberDTO) throws Exception { 
 		
-		String sql = "INSERT INTO MEMBER (ID, PW, NAME, ADDRESS, PHONE, EMAIL "
-				+ "VALUES (?, ?, ?, ?, ?, ?)";
-		PreparedStatement st = connection.prepareStatement(sql);
-		st.setString(1, memberDTO.getId());
-		st.setString(2, memberDTO.getPw());
-		st.setString(3, memberDTO.getName());
-		st.setString(4, memberDTO.getAddress());
-		st.setString(5, memberDTO.getPhone());
-		st.setString(6, memberDTO.getEmail());
-		
-		ResultSet rs = st.executeQuery();
-		DBConnection.disConnection(rs, st, connection);
-		return memberDTO;
+		return SqlSession.
 	}
 		
 //	public static void main(String[] args) {

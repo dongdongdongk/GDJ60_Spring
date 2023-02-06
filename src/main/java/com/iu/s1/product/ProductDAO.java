@@ -21,10 +21,6 @@ public class ProductDAO {
 	private final String NAMESPACE="com.iu.s1.product.ProductDAO.";
 	
 	//delete
-	public int setProductDelete(Long productNum)throws Exception{	
-		return sqlSession.delete(NAMESPACE+"setProductDelete", productNum);
-	}
-	
 	
 	
 	//getMax
@@ -98,11 +94,10 @@ public class ProductDAO {
 	//--------------------------------------
 	
 	//getProductDetail
-	public ProductDTO getProductDetail(ProductDTO productDTO)throws Exception{
-		
-		return sqlSession.selectOne(NAMESPACE+"getProductDetail", productDTO);
-		
+	public ProductDTO getProductDetail(ProductDTO productDTO)throws Exception{	
+		return sqlSession.selectOne(NAMESPACE+"getProductDetail", productDTO);	
 	}
+	
 	
 	public List<ProductDTO> getProductList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getProductList");
@@ -112,4 +107,7 @@ public class ProductDAO {
 		return sqlSession.insert(NAMESPACE+"setAddProduct", productDTO);
 	}
 	
+	public int setProductDelete(Long productNum)throws Exception{	
+		return sqlSession.delete(NAMESPACE+"setProductDelete", productNum);
+	}
 }
