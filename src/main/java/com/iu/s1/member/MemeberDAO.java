@@ -15,6 +15,9 @@ public class MemeberDAO {
 		
 	}
 	
+	public void getMemberID() { 
+		
+	}
 	
 	
 	

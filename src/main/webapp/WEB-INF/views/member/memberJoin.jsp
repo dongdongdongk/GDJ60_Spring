@@ -8,5 +8,22 @@
 </head>
 <body>
 	<h1>MemeberJoin</h1>
+	<div class="col-6">
+		<form action="./memberJoin" method="post">
+			id
+			<input type="text" name="ID"><br>
+			name
+			<input type="password" name="password" value=""><br>
+			phone
+			<input type="tel" name="tel"><br>
+			email
+			<input type="email" name="email"><br>
+			
+			
+			<button type="submit">등록</button>
+		</form>
+		
+	</div>
+	
 </body>
 </html>

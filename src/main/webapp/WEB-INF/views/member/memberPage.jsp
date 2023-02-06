@@ -8,5 +8,18 @@
 </head>
 <body>
 	<h1>MemberPage</h1>
+
+	<hr>
+	<div class="col-6">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+	
+	
+	</table>
+	
+	</div>
+	
+	
 </body>
 </html>
