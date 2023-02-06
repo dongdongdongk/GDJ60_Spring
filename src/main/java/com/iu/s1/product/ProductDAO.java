@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Repository
 public class ProductDAO {
-//getMax
+
+	private 
+	//getMax
 	public Long getProductNum() throws Exception {
 		Connection connection = DBConnection.getConnnection();
 		String sql = "SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL";
