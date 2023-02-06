@@ -43,7 +43,7 @@ public class ProductController {
 		
 //		ProductDTO productDTO = new ProductDTO();
 //		productDTO.setProductNum(num);
-		productDTO = productService.getproductDetail(productDTO);
+		productDTO = productService.getProductDetail(productDTO);
 		
 		System.out.println(productDTO == null);
 //		System.out.println(name);

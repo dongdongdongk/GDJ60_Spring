@@ -21,7 +21,7 @@ public class MemeberDAO {
 	
 	
 	public MemberDTO setAddMenber() throws Exception { 
-		Connection connection  = DBConnection.getConnnection();
+		Connection connection  = DBConnection.getConnection();
 		MemberDTO memberDTO = new MemberDTO();
 		
 		String sql = "INSERT INTO MEMBER (ID, PW, NAME, ADDRESS, PHONE, EMAIL "
@@ -35,7 +35,7 @@ public class MemeberDAO {
 		st.setString(6, memberDTO.getEmail());
 		
 		ResultSet rs = st.executeQuery();
-		DBConnection.disConnect(rs, st, connection);
+		DBConnection.disConnection(rs, st, connection);
 		return memberDTO;
 	}
 		
