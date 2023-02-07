@@ -23,6 +23,10 @@
   		DELETE PRODUCT WHERE PRODUCTNUM=#{productNum}
   	</delete>
   	
+  	<select id="getProductNum" resultType="Long" >
+  		SELECT PRODUCTNUM
+  		FROM PRODUCT
+  	</select>
   	
   
   </mapper>

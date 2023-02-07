@@ -10,6 +10,7 @@
 </h1>
 <a href="/product/list">ProductList</a>
 <a href="/member/memberJoin">MemberJoin</a>
+<a href="/member/memberList">MemberList</a>
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

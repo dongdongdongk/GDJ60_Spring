@@ -3,6 +3,7 @@ package com.iu.s1.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,10 @@ public class MemeberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s1.member.MemberDAO.";
 	
-	public void memberJoin() { 
-		
-	}
 	
-	public void getMemberID() { 
+	
+	public List<MemberDTO> getMemberList() { 
+		return sqlSession.selectList(NAMESPACE +"getMemberList");
 		
 	}
 	
@@ -31,7 +31,7 @@ public class MemeberDAO {
 	
 	public int setAddMenber(MemberDTO memberDTO) throws Exception { 
 		
-		return SqlSession.
+		return sqlSession.insert(NAMESPACE+"setAddMember",memberDTO);
 	}
 		
 //	public static void main(String[] args) {

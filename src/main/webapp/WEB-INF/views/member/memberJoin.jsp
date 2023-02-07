@@ -12,8 +12,10 @@
 		<form action="./memberJoin" method="post">
 			id
 			<input type="text" name="ID"><br>
+			pw
+			<input type="password" name="password" ><br>
 			name
-			<input type="password" name="password" value=""><br>
+			<input type= "text" name="name"><br>
 			phone
 			<input type="tel" name="tel"><br>
 			email

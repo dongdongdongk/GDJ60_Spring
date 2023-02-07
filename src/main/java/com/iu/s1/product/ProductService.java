@@ -22,19 +22,9 @@ public class ProductService {
 	
 	
 	public int setAddProduct(ProductDTO productDTO, List<ProductOptinDTO> ar)throws Exception{
-		Long productNum = productDAO.getProductNum();
-		productDTO.setProductNum(productNum);
-		int result = productDAO.setAddProduct(productDTO);
 		
-		if(ar != null) {
 		
-			for(ProductOptinDTO productOptinDTO:ar) {
-				productOptinDTO.setProductNum(productNum);
-				result = productDAO.setAddProductOption(productOptinDTO);
-			}
-		}
-		
-		return result;	
+		return productDAO.setAddProduct(productDTO);	
 	}
 
 }
