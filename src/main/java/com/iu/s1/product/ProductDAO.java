@@ -24,24 +24,6 @@ public class ProductDAO {
 	
 	
 	//getMax
-	public Long getProductNum()throws Exception{
-		Connection con = DBConnection.getConnection();
-		
-		String sql = "SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		ResultSet rs = st.executeQuery();
-		
-		rs.next();
-		
-		Long num = rs.getLong(1);
-		
-		DBConnection.disConnection(rs, st, con);
-		
-		return num;
-		
-	}
 	
 //	--------------------------------------
 	public List<ProductOptinDTO> getProductOptionList()throws Exception{
@@ -109,5 +91,10 @@ public class ProductDAO {
 	
 	public int setProductDelete(Long productNum)throws Exception{	
 		return sqlSession.delete(NAMESPACE+"setProductDelete", productNum);
+	}
+	public Long getProductNum()throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE + "getProductNum");
+		
 	}
 }

@@ -24,8 +24,8 @@
   	</delete>
   	
   	<select id="getProductNum" resultType="Long" >
-  		SELECT PRODUCTNUM
-  		FROM PRODUCT
+  		SELECT PRODUCTNUM_SEQ.NEXTVAL 
+  		FROM DUAL
   	</select>
   	
   

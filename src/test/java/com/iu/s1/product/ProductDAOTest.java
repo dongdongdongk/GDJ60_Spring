@@ -29,6 +29,7 @@ public class ProductDAOTest extends MyTestCase {
 		productDTO = productDAO.getProductDetail(productDTO);
 		assertNotNull(productDTO);
 	}
+	
 	@Test
 	public void setProductAddTest() throws Exception { 
 		ProductDTO productDTO = new ProductDTO();
@@ -37,7 +38,5 @@ public class ProductDAOTest extends MyTestCase {
 		productDTO.setProductDetail("TestDetail");
 		int result = productDAO.setAddProduct(productDTO);
 		assertEquals(1, result);
-		
 	}
-
 }
