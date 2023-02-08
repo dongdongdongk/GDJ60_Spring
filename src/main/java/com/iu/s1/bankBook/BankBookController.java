@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,7 @@ public class BankBookController {
 		mv.addObject("list", ar);
 		return mv;
 	}
-	@RequestMapping(value = "add")
+	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public ModelAndView setBankBookAdd(ModelAndView mv) throws Exception {
 		mv.setViewName("bankBook/bankBookAdd");		
 		return mv; 
@@ -39,12 +40,22 @@ public class BankBookController {
 		
 	}
 	
-	@RequestMapping(value = "update")
+	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public ModelAndView setBankBookUpdate(BankBookDTO bankBookDTO, ModelAndView mv)throws Exception {
-		mv.setViewName("bankBook/bankBookUpdate");
-		mv.addObject("update", bankBookDTO);
+		
 		return mv;
 	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public ModelAndView setBankBookUpdate(BankBookDTO bankBookDTO) throws Exception {
+		bankBookDTO = bankBookService.getBankBookDetail(bankBookDTO);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bankBook/bankBookUpdate");
+		return mv;
+	}
+	
+	
+	
 
 	@RequestMapping(value = "delete",method = RequestMethod.POST)
 	public ModelAndView setBankBookDelete(BankBookDTO bankBookDTO) throws Exception {
