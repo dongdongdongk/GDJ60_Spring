@@ -15,12 +15,12 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@RequestMapping(value = "memberJoin", method=RequestMethod.GET)
-	public void memberJoin() { 
-
+	public void setAddMember() { 
 	}
 	
 	@RequestMapping(value = "memberJoin", method=RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO) { 
+	public String setAddMember(MemberDTO memberDTO) throws Exception { 
+		int result = memberService.setAddMember(memberDTO);
 		return "redirect:./memberList";
 	}
 	
@@ -43,7 +43,7 @@ public class MemberController {
 	}
 	
 	
-	public String setAddMember() { 
-		return "member/Addmember";
-	}
+//	public String setAddMember() { 
+//		return "member/Addmember";
+//	}
 }

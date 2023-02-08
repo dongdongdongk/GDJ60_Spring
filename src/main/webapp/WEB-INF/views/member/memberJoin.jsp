@@ -11,15 +11,15 @@
 	<div class="col-6">
 		<form action="./memberJoin" method="post">
 			id
-			<input type="text" name="ID"><br>
+			<input type="text" name="ID" ><br>
 			pw
 			<input type="password" name="password" ><br>
 			name
-			<input type= "text" name="name"><br>
+			<input type= "text" name="name" ><br>
 			phone
-			<input type="tel" name="tel"><br>
+			<input type="tel" name="tel" ><br>
 			email
-			<input type="email" name="email"><br>
+			<input type="email" name="email" ><br>
 			
 			
 			<button type="submit">등록</button>

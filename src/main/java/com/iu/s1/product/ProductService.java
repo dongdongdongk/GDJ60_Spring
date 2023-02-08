@@ -21,7 +21,7 @@ public class ProductService {
 	}
 	
 	
-	public int setAddProduct(ProductDTO productDTO, List<ProductOptinDTO> ar)throws Exception{
+	public int setAddProduct(ProductDTO productDTO)throws Exception{
 		
 		
 		return productDAO.setAddProduct(productDTO);	

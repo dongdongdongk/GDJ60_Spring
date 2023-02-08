@@ -17,12 +17,20 @@ public class BankBookDAOTest extends MyTestCase {
 	@Test
 	public void setBankBookAdd() throws Exception{ 
 		BankBookDTO bankBookDTO = new BankBookDTO();
-		bankBookDTO.setBookNumber(32L);
+		
 		bankBookDTO.setBookDetail("fd");
 		bankBookDTO.setBookName("kdh");
 		bankBookDTO.setBookRate(3.21);
-		bankBookDTO.setBookSale(3);
+		bankBookDTO.setBookSale(1);
 		int test = bankBookDAO.setBankBookAdd(bankBookDTO);
 		assertEquals(1,test);
+	}
+	@Test
+	public void getBankBookDetail() throws Exception {
+		BankBookDTO bankBookDTO = new BankBookDTO();
+		bankBookDTO.setBookNumber(1L);
+		bankBookDTO = bankBookDAO.getBankBookDetail(bankBookDTO);
+		assertNotNull(bankBookDTO);
+	
 	}
 }

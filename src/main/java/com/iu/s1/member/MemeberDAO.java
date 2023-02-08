@@ -25,11 +25,7 @@ public class MemeberDAO {
 		
 	}
 	
-	
-	
-	
-	
-	public int setAddMenber(MemberDTO memberDTO) throws Exception { 
+	public int setAddMember(MemberDTO memberDTO) throws Exception { 
 		
 		return sqlSession.insert(NAMESPACE+"setAddMember",memberDTO);
 	}

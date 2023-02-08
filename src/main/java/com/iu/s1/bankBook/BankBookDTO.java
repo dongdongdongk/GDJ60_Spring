@@ -1,17 +1,18 @@
 package com.iu.s1.bankBook;
 
 public class BankBookDTO {
-	private Long bookNumber;
+	private Long bookNum;
 	private String bookName;
 	private Double bookRate;
 	private Integer bookSale;
 	private String bookDetail;
 	
-	public Long getBookNumber() {
-		return bookNumber;
+	
+	public Long getBookNum() {
+		return bookNum;
 	}
-	public void setBookNumber(Long bookNumber) {
-		this.bookNumber = bookNumber;
+	public void setBookNum(Long bookNum) {
+		this.bookNum = bookNum;
 	}
 	public String getBookName() {
 		return bookName;

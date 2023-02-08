@@ -20,7 +20,7 @@ public class BankBookDAO {
 		return sqlSession.selectList(NAMESPACE + "getBankBookList");
 	}
 
-	public ProductDTO getBankBookDetail(BankBookDTO bankBookDTO) throws Exception {
+	public BankBookDTO getBankBookDetail(BankBookDTO bankBookDTO) throws Exception {
 		
 		return sqlSession.selectOne(NAMESPACE + "getBankBookDetail", bankBookDTO);	
 	}
@@ -34,8 +34,7 @@ public class BankBookDAO {
 	}
 	
 	public int setBankBookDelete(BankBookDTO bankBookDTO) throws Exception {
-		return sqlSession.delete(NAMESPACE + "setBankBookDelete", bankBookDTO);
-		
+		return sqlSession.delete(NAMESPACE + "setBankBookDelete", bankBookDTO);	
 	}
-
+	
 }

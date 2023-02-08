@@ -14,7 +14,7 @@ public class MemberService {
 	
 	public int setAddMember(MemberDTO memberDTO) throws Exception { 
 		
-		return memeberDAO.setAddMenber(memberDTO);
+		return memeberDAO.setAddMember(memberDTO);
 	
 	}
 	

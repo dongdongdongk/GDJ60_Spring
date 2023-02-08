@@ -59,9 +59,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "productAdd",method = RequestMethod.POST)
-	public String productadd(ProductDTO productDTO) throws Exception {
-		int result = productService.setAddProduct(productDTO, null);
-		System.out.println(result ==1);
+	public String productAdd(ProductDTO productDTO) throws Exception {
+//		int result = productService.setAddProduct(productDTO, null);
+		
 		return "redirect:./list";
 	}
 	

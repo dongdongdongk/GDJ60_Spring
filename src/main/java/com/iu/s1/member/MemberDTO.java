@@ -4,7 +4,6 @@ public class MemberDTO {
 	private String id;
 	private String pw;
 	private String name;
-	private String address;
 	private String phone;
 	private String email;
 	
@@ -25,12 +24,6 @@ public class MemberDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public String getPhone() {
 		return phone;

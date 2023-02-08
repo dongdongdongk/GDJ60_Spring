@@ -6,23 +6,23 @@
   <mapper namespace="com.iu.s1.bankBook.BankBookDAO">
   	<select id="getBankBookList" resultType="BankBookDTO">
   		SELECT *
-  		FORM BANKBOOK
+  		FROM BANKBOOK
   	</select>
   	
   	<insert id="setBankBookAdd" parameterType="BankBookDTO">
   		INSERT INTO BANKBOOK
-  		VALUSE (#(bookNumber),#(bookName),#(bookRate),#(bookSale),#(bookDetail))
+  		VALUES (PRODUCT_SEQ.NEXTVAL,#{bookName},#{bookDetail},#{bookRate},#{bookSale})
   	</insert>
   	
   	<select id="getBankBookDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
   		SELECT *
   		FROM BANKBOOK
-  		WHERE BANKBOOKNUMBER = #(bankBookNumber)
+  		WHERE BOOKNUM = #{bookNum}
   	</select>
   	
   	<delete id="setBankBookDelete" parameterType="BankBookDTO">
   		DELETE BANKBOOK
-  		WHERE BANKBOOKNUMBER = #(bankBookNumber)
+  		WHERE BOOKNUM = #{bookNum}
   	</delete>
   	
   	
