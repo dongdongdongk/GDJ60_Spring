@@ -7,10 +7,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="/resources/css/table.css">
 <body>
-	<h1>BankBook List Page</h1>
+	<h1 class="title">BankBook List Page</h1>
 
-	<table border = 1>
+	<div class="image">
+		<img alt='비트시바' src="../resources/images/test3.jpg">
+	</div>
+
+	
+	<table class="table" border = 1>
 		<thead>
 			<tr>
 				<th>상품명</th>

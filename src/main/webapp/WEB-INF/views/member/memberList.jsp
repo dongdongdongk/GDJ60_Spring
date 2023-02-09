@@ -23,7 +23,7 @@
 		
 		<tbody>
 		
-			<c:forEach items="${mlist}" var="mls"> <!-- dto는 page영역에 담김 -->
+			<c:forEach items="${list}" var="mls"> <!-- dto는 page영역에 담김 -->
 				<tr>
 					<td>${mls.id}></td>
 					<td>${mls.pw}</td>

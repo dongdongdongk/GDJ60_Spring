@@ -51,6 +51,7 @@ public class BankBookController {
 		bankBookDTO = bankBookService.getBankBookDetail(bankBookDTO);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bankBook/bankBookUpdate");
+		mv.addObject("dto",bankBookDTO);
 		return mv;
 	}
 	
@@ -65,12 +66,12 @@ public class BankBookController {
 		return mv;
 	}
 	
-//	@RequestMapping(value = "delete")
-//	public ModelAndView setBankBookDelete(BankBookDTO bankBookDTO, ModelAndView mv)throws Exception {
-//		mv.setViewName("bankBook/bankBookDelete");
-//		mv.addObject("delete",bankBookDTO);
-//		return mv;
-//	}
+	@RequestMapping(value = "delete",method = RequestMethod.GET)
+	public ModelAndView setBankBookDelete(BankBookDTO bankBookDTO, ModelAndView mv)throws Exception {
+		mv.setViewName("bankBook/bankBookDelete");
+		mv.addObject("delete",bankBookDTO);
+		return mv;
+	}
 	@RequestMapping(value = "detail" , method = RequestMethod.GET)
 	public ModelAndView getBankBookDetail(BankBookDTO bankBookDTO , ModelAndView mv) throws Exception {
 		bankBookDTO = bankBookService.getBankBookDetail(bankBookDTO);

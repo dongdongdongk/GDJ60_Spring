@@ -38,7 +38,7 @@ public class MemberController {
 	public ModelAndView memberList(ModelAndView mv) {
 		List<MemberDTO> ar = memberService.getMemberList();
 		mv.setViewName("member/memberList");
-		mv.addObject("mlist",ar);
+		mv.addObject("list",ar);
 		return mv;
 	}
 	

@@ -7,7 +7,7 @@
  
   	<insert id="setAddMember" parameterType="MemberDTO">
   		INSERT INTO BANKMEMBERS 
-  		VALUES (#{id},#{pw},#{name},#{phone},#{email} )
+  		VALUES (#{id},#{pw},#{name},#{phone},#{email})
   	</insert>
   	
   	<select id="getMemberList" resultType="MemberDTO">
