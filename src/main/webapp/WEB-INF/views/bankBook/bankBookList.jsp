@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
 <link rel="stylesheet" href="/resources/css/table.css">
+</head>
 <body>
 	<h1 class="title">BankBook List Page</h1>
 
@@ -16,7 +16,7 @@
 	</div>
 
 	
-	<table class="table" border = 1>
+	<table class="table2">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -28,9 +28,9 @@
 		<c:forEach items ="${list}" var = "dto" >
 			<tr>
 				<td><a href="./detail?bookNum=${dto.bookNum}">${dto.bookName}</a></td>
-				<td>${dto.bookRate}</td>
+				<td class="tbl_td">${dto.bookRate}</td>
 				
-				<td>
+				<td class="tbl_td">
 					<c:choose>
 						<c:when test = "${dto.bookSale eq 1}">판매중</c:when>
 						<c:otherwise>판매중단</c:otherwise>

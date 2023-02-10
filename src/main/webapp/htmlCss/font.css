@@ -1,0 +1,23 @@
+.f1 {
+    font-size: 2em;
+}
+
+.f1_1{
+    font-size: 2em ;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace,;
+}
+
+.f1_2{
+    width: 200px;
+    height: 200px;
+    font-size: 1.2rem ;
+    font-weight: lighter;
+    font-style: oblique;
+    border: 1px solid red;
+    text-align: center;
+    line-height: 200px;
+}
+
+

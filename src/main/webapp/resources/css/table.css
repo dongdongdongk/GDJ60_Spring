@@ -1,18 +1,64 @@
-.table {
+/* .table {
     width: 70%;
-    margin: 0px auto;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse ;
+} */
 
+/* .table th, .table td {
+    border: 1px solid black;
+    height: 50px;
+}
+
+.table > thead > tr{
+    background-color: black;
+    color: white;
+    border: 10px white;
 }
 
 .title {
     width: 30%;
     margin: 0 auto;
-
 }
 
 
 .image {
     width : 30%;
     margin: 0 auto;
+}
 
+.tbl_tb {
+    text-align: center;
+}
+
+.table >tbody td > a {
+    text-decoration: none;
+    color: black;
+} */
+
+
+
+
+/*==============================================*/
+.table2 {
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse ;
+}
+
+
+.table2 > thead >tr {
+background-color: black;
+color: white;
+}
+
+.table2 > tbody > tr {
+    border-bottom: 1px solid black;
+}
+
+.table2 tb, .table2 td {
+    border-right: 3px ;
 }
