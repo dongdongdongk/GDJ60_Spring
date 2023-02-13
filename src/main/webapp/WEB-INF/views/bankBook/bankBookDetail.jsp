@@ -39,15 +39,16 @@
 						</div>
 					</ul>
 					<div class="mt-3 align-middle">
-				<form action="">
-						<button type="submit" class="btn btn-danger" value="./delete?bookNum=${dto.bookNum}">상품삭제</button>
+						<a class="btn btn-danger" href="./delete?bookNum=${dto.bookNum}" role="button">샘플삭제</a>
+					
 				</c:if>
 				<c:if test="${empty dto }">
 					<h3>존재하지 않는 상품입니다.</h3>
 				</c:if>
-				<button type="submit" class="btn btn-warning" value="./update?bookNum=${dto.bookNum}">상품수정</button>
-				<button type="submit" class="btn btn-primary" value="./list">목록으로</button>
-				</form>
+				<a class="btn btn-warning" href="./update?bookNum=${dto.bookNum}" role="button">상품수정</a>	
+				<a class="btn btn-primary" href="./list" role="button">목록으로</a>
+				
+				
 			</div>
 			<c:import url="../template/common_js.jsp"></c:import>
 		</body>
