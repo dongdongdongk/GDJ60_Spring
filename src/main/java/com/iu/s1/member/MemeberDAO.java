@@ -30,6 +30,11 @@ public class MemeberDAO {
 		return sqlSession.insert(NAMESPACE+"setAddMember",memberDTO);
 	}
 		
+	
+	public int memberDelete(MemberDTO memberDTO)throws Exception {
+		
+		return sqlSession.delete(NAMESPACE + "memberDelete"); 
+	}
 //	public static void main(String[] args) {
 //		MemeberDAO memberDAO = new MemeberDAO();
 //		MemberDTO memberDTO = new MemberDTO();

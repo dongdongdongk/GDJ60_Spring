@@ -13,10 +13,12 @@
 		
 		
 		<input type="hidden" name="bookNum" value="${dto.bookNum}"><br>
+		
 		<fieldset>
 			<legend>상품명</legend>
 			<input type="text" name="bookName" value="${dto.bookName}" placeholder="상품명 입력"><br>
 		</fieldset>
+		
 		<fieldset>
 			<legend>삼품설명</legend>
 			<textarea name="bookDetail" value="${dto.bookDetail}"></textarea><br>

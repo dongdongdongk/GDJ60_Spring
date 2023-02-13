@@ -42,7 +42,16 @@ public class MemberController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "member Delete",method = RequestMethod.GET )
+	public void memeberDelete() { 
+		
+	}
 	
+	@RequestMapping(value = "member Delete",method = RequestMethod.POST)
+	public String memberDelete(MemberDTO memberDTO) throws Exception { 
+		int result = memberService.memberDelete(memberDTO);
+		return "reditect:/memberDelete";
+	}
 //	public String setAddMember() { 
 //		return "member/Addmember";
 //	}
