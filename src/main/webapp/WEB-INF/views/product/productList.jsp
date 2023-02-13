@@ -8,9 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/table.css">
+<!--<link rel="stylesheet" href="/resources/css/table.css">-->
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 	<div class="title">
 		<h1>Product List</h1>
 	</div>

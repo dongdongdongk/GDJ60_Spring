@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/table.css">
+<!--<link rel="stylesheet" href="/resources/css/table.css">-->
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 	<h1 class="title">BankBook List Page</h1>
 
 	<div class="image">
@@ -16,7 +18,7 @@
 	</div>
 
 	
-	<table class="table2">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -44,5 +46,6 @@
 		</tbody>
 	</table>
 	<a href="./add">상품등록</a>
+	<c:import url="./template/common_js.jsp"></c:import>
 </body>
 </html>

@@ -4,36 +4,60 @@
 
 		<head>
 			<title>Home</title>
-			<link rel="stylesheet" href="/resources/css/reset.css">
-			<link rel="stylesheet" href="./resources/css/main.css">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<c:import url="./template/common_css.jsp"></c:import>
 		</head>
 
 		<body>
-			<header>
-				<div class="header_wrap">
-					<div class="header_logo">
-						<img src="/resources/images/logo.png" alt="로고이미지">
-					</div>
-					<nav class="header_nav">
-						<ul>
-							<li><a href="#">공지사항</a></li>
-							<li><a href="#">제품</a></li>
-							<li><a href="#">저축상품</a></li>
-							<li><a href="#">기타메뉴</a></li>
-						</ul>
-					</nav>
-					<div class="header_sub">
-						<ul>
-							<li><a href="#">LOGIN</li></a>
-							<li><a href="#">JOIN</li></a>
-							<li><a href="#">KO</li></a>
-							<li><a href="#">EN</li></a>
-							<li><a href="#">JP</li></a>
-							<li><a href="#">CN</li></a>
-						</ul>
+			<c:import url="./template/header.jsp"></c:import>
+
+			<section class="container border border-danger">
+				<article class="row">
+					<div class="col border border-danger">1</div>
+					<div class="col border border-primary">2</div>
+					<div class="col border border-danger">3</div>
+				</article>
+			</section>
+
+			<c:import url="./template/common_js.jsp"></c:import>
+
+			<section class="container-fluid border border-primary">
+				<article class="row"></article>
+				<div class="col-2 border border-danger">1</div>
+				<div class="col-7 border border-primary">2</div>
+				<div class="col-3 border border-danger">3</div>
+
+
+		
+
+			<div class="container-fluid my-5">
+				<div class="row col-md-6 offset-md-3">
+					<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="/resources/images/s1.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+								<img src="/resources/images/s2.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+								<img src="/resources/images/s3.jpg" class="d-block w-100" alt="...">
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+							data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+							data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
 					</div>
 				</div>
-			</header>
+			</div>
+
 
 		</body>
 
