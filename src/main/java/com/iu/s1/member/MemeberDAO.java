@@ -35,7 +35,21 @@ public class MemeberDAO {
 		
 		return sqlSession.delete(NAMESPACE + "memberDelete"); 
 	}
-//	public static void main(String[] args) {
+	
+	public int setMemberRoleAdd(MemberDTO memberDTO)throws Exception {
+		return sqlSession.insert(NAMESPACE+"setMemeberRoleAdd",memberDTO);
+	}
+
+	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getMemberLogin", memberDTO);
+	}
+	
+	public int setMemberUpdate(MemberDTO memberDTO)throws Exception {
+		return sqlSession.insert(NAMESPACE+"setMemberUpdate",memberDTO);
+	}
+	
+	
+	//	public static void main(String[] args) {
 //		MemeberDAO memberDAO = new MemeberDAO();
 //		MemberDTO memberDTO = new MemberDTO();
 //		memberDTO.setId("id1");

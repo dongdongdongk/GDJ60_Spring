@@ -15,11 +15,13 @@
   		FROM BANKMEMBERS
   	</select>
  
- 	<insert id="" parameterType="MemberDTO">
+ 	<insert id="setMemberRoleAdd" parameterType="MemberDTO">
  	INSERT INTO MEMBER_ROLE(ID,ROLENUM)
  	VALUES(#{id},(SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER')) 
- 	
  	</insert>
  
+ 	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT * FROM BANKMEMBERS WHERE ID=#{id} AND PW=#{pw}
+  	</select>
  
   </mapper>

@@ -12,7 +12,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<h1>MemeberJoin</h1>
 	<div class="col-6">
-		<form action="../memberJoin" method="post">
+		<form action="./memberJoin" method="post">
 			
 			<!--<input type="text" name="ID" ><br>-->
             <div class="mb-3">
