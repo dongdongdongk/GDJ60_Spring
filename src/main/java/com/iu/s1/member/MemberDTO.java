@@ -11,28 +11,15 @@ public class MemberDTO {
 	private RoleDTO roleDTO;
 	
 	
-	
 	public String getId() {
 		return id;
 	}
-	
-
-
-	
 	public RoleDTO getRoleDTO() {
 		return roleDTO;
 	}
-
-
-
-
 	public void setRoleDTO(RoleDTO roleDTO) {
 		this.roleDTO = roleDTO;
 	}
-
-
-
-
 	public void setId(String id) {
 		this.id = id;
 	}

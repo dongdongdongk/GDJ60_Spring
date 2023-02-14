@@ -17,16 +17,34 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value = "memberJoin", method=RequestMethod.GET)
-	public void setAddMember() { 
+//	@RequestMapping(value = "memberJoin", method=RequestMethod.GET)
+//	public void setAddMember() { 
+//	}
+	
+	@RequestMapping(value = "memberJoin",method = RequestMethod.GET)
+	public ModelAndView setMemberAdd() { 
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberJoin");
+		return mv;
 	}
 	
-	@RequestMapping(value = "memberJoin", method=RequestMethod.POST)
-	public String setAddMember(MemberDTO memberDTO) throws Exception { 
-		int result = memberService.setAddMember(memberDTO);
-		return "redirect:./memberList";
+	
+	@RequestMapping(value = "memberJoin",method = RequestMethod.POST)
+	public ModelAndView setMemberAdd(MemberDTO memberDTO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setMemeberAdd(memberDTO);
+		mv.setViewName("redirect:../");
+		return mv;
+		
 	}
 	
+	
+//	@RequestMapping(value = "memberJoin", method=RequestMethod.POST)
+//	public String setAddMember(MemberDTO memberDTO) throws Exception { 
+//		int result = memberService.setAddMember(memberDTO);
+//		return "redirect:./memberList";
+//	}
+//	
 	
 	
 	
@@ -58,25 +76,39 @@ public class MemberController {
 		return mv;
 	}
 	
-	
-//	@RequestMapping(value = "memberLogin,",method = RequestMethod.POST)
-//	public ModelAndView memberLogin(MemberDTO memberDTO,HttpServletRequest request) throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		memberDTO = memberService.memberLogin(memberDTO);
-//		HttpSession session = request.getSession();
-//		session.setAttribute("member", memberDTO);
-//		
-//		mv.setViewName("redirect:../");
-//		return mv;	
-//	}
-	
-	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
-	public ModelAndView getMemberLogin(MemberDTO memberDTO)throws Exception{
+	@RequestMapping(value = "memberLogin",method = RequestMethod.POST)
+	public ModelAndView getMemberLogin(MemberDTO memberDTO,HttpServletRequest request)throws Exception { 
 		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.getMemberLogin(memberDTO);
+		HttpSession session = request.getSession();
+		session.setAttribute("member", memberDTO);
 		mv.setViewName("redirect:../");
 		return mv;
 	}
+	
+//	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
+//	public ModelAndView memberLogin(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
+//	    ModelAndView mv = new ModelAndView();
+//	    memberDTO = memberService.getMemberLogin(memberDTO);
+//	    if (memberDTO == null) {  // 로그인 실패시
+//	        mv.setViewName("redirect:memberLogin");  // 로그인 페이지로 다시 보내줌
+//	        return mv;
+//	    }
+//	    HttpSession session = request.getSession();
+//	    session.setAttribute("member", memberDTO);
+//	    mv.setViewName("redirect:/");  // 홈으로 보내줌
+//	    return mv;
+//	}
+	
+	
+//	
+//	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
+//	public ModelAndView getMemberLogin(MemberDTO memberDTO)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		memberDTO = memberService.getMemberLogin(memberDTO);
+//		mv.setViewName("redirect:../");
+//		return mv;
+//	}
 	
 //	@RequestMapping(value = "memberLogout",method = RequestMethod.GET)
 //	public ModelAndView getMemberLogout(HttpSession session)throws Exception {
@@ -87,18 +119,44 @@ public class MemberController {
 
 
 	@RequestMapping(value = "memberUpdate",method = RequestMethod.GET)
-	public ModelAndView setMemberUpdate(MemberDTO memberDTO) throws Exception {
+	public ModelAndView setMemberUpdate() throws Exception {
 		ModelAndView mv = new ModelAndView();
-		memberDTO = memberService.get(memberDTO);
 		mv.setViewName("member/memberUpdate");
-		mv.addObject("dto",memberDTO);
 		return mv;	
 	}
 	
-	public void getMemberDetail()throws Exception { 
+	@RequestMapping(value = "memberUpdate",method = RequestMethod.POST)
+	public ModelAndView setMemberUpdate(MemberDTO memberDTO,HttpSession session)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionMemberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO.setId(sessionMemberDTO.getId());
+		int result = memberService.setMemberUpdate(memberDTO);
+		if(result>0) {
+			session.setAttribute("member", memberDTO);
+		}
+		mv.setViewName("redirect:./memberPage");
+		return mv;
 		
 	}
+	
+	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
+	public ModelAndView getMemberLogout(HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		session.invalidate();
+		mv.setViewName("redirect:../");
+		return mv;
+	}
+
+	@RequestMapping(value = "memberPage", method = RequestMethod.GET)
+	public ModelAndView getMemberPage()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("member/memberPage");
+		return mv;
+	}
+	
+	
+	
 	
 }
 

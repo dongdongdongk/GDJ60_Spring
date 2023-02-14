@@ -15,21 +15,22 @@ public class MemberService {
 	
 	public int setAddMember(MemberDTO memberDTO) throws Exception { 
 		
-		return memeberDAO.setAddMember(memberDTO);
+		return memeberDAO.setMemberAdd(memberDTO);
 	
 	}
 	
 	public List<MemberDTO> getMemberList() { 
 		return memeberDAO.getMemberList();
-	}
+	} 
 	
-//	public ModelAndView setMemeberAdd(MemberDTO memberDTO) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		int result = memberDTO.set(memberDTO);
-//		mv.setViewName("redirect:../");
-//		return mv;
-//				
-//	}
+	public int setMemeberAdd(MemberDTO memberDTO) throws Exception {
+		
+		int result = memeberDAO.setMemberAdd(memberDTO);
+		result = memeberDAO.setMemberRoleAdd(memberDTO);
+		return result;
+		
+				
+	}
 	
 	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
 		return memeberDAO.getMemberLogin(memberDTO);

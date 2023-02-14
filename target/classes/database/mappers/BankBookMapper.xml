@@ -30,5 +30,8 @@
   		WHERE BOOKNUM= #{bookNum}
   	</update>
   	
+  	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT ID FROM BANKMEMBERS WHERE ID=#{id} AND PW=#{pw}
+  	</select>
   		
   </mapper>
