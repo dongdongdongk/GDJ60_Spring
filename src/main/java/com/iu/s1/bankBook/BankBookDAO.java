@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.product.ProductDTO;
+import com.iu.s1.utill.Pager;
 
 @Repository
 public class BankBookDAO {
@@ -15,9 +16,9 @@ public class BankBookDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s1.bankBook.BankBookDAO."; 
 	
-	public List<BankBookDTO> getBankBookeList()throws Exception { 
+	public List<BankBookDTO> getBankBookeList(Pager pager)throws Exception { 
 		
-		return sqlSession.selectList(NAMESPACE + "getBankBookList");
+		return sqlSession.selectList(NAMESPACE + "getBankBookList",pager);
 	}
 
 	public BankBookDTO getBankBookDetail(BankBookDTO bankBookDTO) throws Exception {
@@ -35,6 +36,10 @@ public class BankBookDAO {
 	
 	public int setBankBookDelete(BankBookDTO bankBookDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE + "setBankBookDelete", bankBookDTO);	
+	}
+	
+	public long getBankBookCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getBankBookCount",pager);
 	}
 	
 }

@@ -36,6 +36,18 @@
 		</tbody>
 	</table>
 	
+	
+			<nav aria-label="Page navigation example">
+		  <ul class="pagination">
+		    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="">
+		    <li class="page-item"><a class="page-link" href="#">1</a></li>
+		    </c:forEach>
+		    
+		    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+		  </ul>
+		</nav>
+	
 		<a class="btn btn-danger" href="./memberList">MemberList</a>
 	</div>
 	

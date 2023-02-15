@@ -10,42 +10,75 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>
-	<h1 class="title">BankBook List Page</h1>
 
-	<div class="image">
-		<img alt='비트시바' src="../resources/images/test3.jpg">
-	</div>
+<c:import url="../template/header.jsp"></c:import>
 
+<div class="container-fluid my-5">
 	
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>상품명</th>
-				<th>이자율</th>
-				<th>판매여부</th>
-			</tr>
-		</thead>
-		<tbody>
-		<c:forEach items ="${list}" var = "dto" >
-			<tr>
-				<td><a href="./detail?bookNum=${dto.bookNum}">${dto.bookName}</a></td>
-				<td class="tbl_td">${dto.bookRate}</td>
+	<div class="row mb-4">
+		<h1 class="col-md-7 mx-auto text-center border-bottom border-dark pb-4">BankBook List page</h1>
+	</div>
+	
+	<div class="row col-md-7 mx-auto">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>상품명</th>
+					<th>이자율</th>
+					<th>판매여부</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<!-- items의 ${list}는 RequestScope, var의 dto는 PageScope -->
+				<c:forEach items="${list}" var="dto">
+					<tr>
+						<!-- ${pageScope.dto.bookName}=${dto.bookName} -->
+						<!-- ?이후는 파라미터임을 명시 -->
+						<td><a href="./detail?bookNum=${dto.bookNum}">${dto.bookName}</a></td>
+						<td class="tbl_td">${dto.bookRate}</td>
+						<td class="tbl_td">
+							<!-- Switch case 문 --> <c:choose>
+								<c:when test="${dto.bookSale eq 1}">판매중</c:when>
+								<c:otherwise>판매중단</c:otherwise>
+							</c:choose> <%-- 						<c:if test="${dto.bookSale eq 1}">판매중</c:if>
+						<c:if test="${dto.bookSale eq 0}">판매중단</c:if> 
+--%>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
+		<div class="row">
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			    	<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+				</c:forEach>
 				
-				<td class="tbl_td">
-					<c:choose>
-						<c:when test = "${dto.bookSale eq 1}">판매중</c:when>
-						<c:otherwise>판매중단</c:otherwise>
-					</c:choose> 
-				
-				<%--<c:if test="${dto.bookSale eq 1}">판재중</c:if>
-					<c:if test="${dto.bookSale eq 0}">판재중단</c:if> --%>
-				</td>
-			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
-	<a href="./add">상품등록</a>
-	<c:import url="./template/common_js.jsp"></c:import>
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			  </ul>
+			</nav>
+		
+			<!-- for(int i=1;i<=??;i++){i} -->
+			
+		</div>
+		
+		<!-- URL 요청하면 DS가 Controller로 이동 -->
+	</div>
+	<div class="row col-md-7 mx-auto">
+		<a href="./add" class="btn btn-primary col-2">상품등록</a>
+	</div>
+</div>
+	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
