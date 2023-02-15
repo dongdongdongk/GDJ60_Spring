@@ -14,19 +14,13 @@ public class BankBookService {
 	@Autowired
 	private BankBookDAO bankBookDAO;
 	
-	public List<BankBookDTO> getBankBookList(Pager pager) throws Exception {
-//		long page=pager.getPage();
-//		long perPage=10L;
-//		long s=(page-1)*perPage+1;
-//		long l=page*perPage;
-//		long rpage = (page-1)*10+s;
-//		long rpage2 = page*10;
-		pager.makeRow();
-		Long totalCount = bankBookDAO.getBankBookCount(pager);
+public List<BankBookDTO> getBankBookList(Pager pager)throws Exception{
+		
+		Long totalCount = bankBookDAO.getBankBookCount();//30
+		
 		pager.makeNum(totalCount);
-		pager.setTotalCount(totalCount);
-//		pager.setStartRow(s);
-//		pager.setLastRow(l);
+		pager.makeRow();
+		
 		return bankBookDAO.getBankBookeList(pager);
 	}
 

@@ -42,4 +42,7 @@ public class BankBookDAO {
 		return sqlSession.selectOne(NAMESPACE + "getBankBookCount",pager);
 	}
 	
+	public Long getBankBookCount()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getBankBookCount");
+	}
 }
