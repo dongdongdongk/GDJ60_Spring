@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.iu.s1.utill.DBConnection;
+import com.iu.s1.util.DBConnection;
 
 @Repository
 public class MemeberDAO {

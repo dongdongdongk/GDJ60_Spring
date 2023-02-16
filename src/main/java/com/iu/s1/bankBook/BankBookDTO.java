@@ -3,11 +3,9 @@ package com.iu.s1.bankBook;
 public class BankBookDTO {
 	private Long bookNum;
 	private String bookName;
+	private String bookDetail;
 	private Double bookRate;
 	private Integer bookSale;
-	private String bookDetail;
-	
-	
 	public Long getBookNum() {
 		return bookNum;
 	}
@@ -20,6 +18,12 @@ public class BankBookDTO {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
+	public String getBookDetail() {
+		return bookDetail;
+	}
+	public void setBookDetail(String bookDetail) {
+		this.bookDetail = bookDetail;
+	}
 	public Double getBookRate() {
 		return bookRate;
 	}
@@ -27,21 +31,16 @@ public class BankBookDTO {
 		this.bookRate = bookRate;
 	}
 	public Integer getBookSale() {
+		if(this.bookSale == null || this.bookSale != 1) {
+			this.bookSale=0;
+		}
 		return bookSale;
 	}
 	public void setBookSale(Integer bookSale) {
+		if(bookSale == null || bookSale != 1) {
+			this.bookSale=0;
+		}
 		this.bookSale = bookSale;
 	}
-	public String getBookDetail() {
-		return bookDetail;
-	}
-	public void setBookDetail(String bookDetail) {
-		this.bookDetail = bookDetail;
-	}
-	
-	
-	
-	
-	
-	
+
 }
