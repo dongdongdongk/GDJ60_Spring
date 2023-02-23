@@ -20,6 +20,12 @@ public class MemberController {
 //	@RequestMapping(value = "memberJoin", method=RequestMethod.GET)
 //	public void setAddMember() { 
 //	}
+	@RequestMapping(value="memberAgree", method = RequestMethod.GET)
+	public void setMemberAgerr() throws Exception{
+		
+	}
+	
+	
 	
 	@RequestMapping(value = "memberJoin",method = RequestMethod.GET)
 	public ModelAndView setMemberAdd() { 
@@ -33,7 +39,7 @@ public class MemberController {
 	public ModelAndView setMemberAdd(MemberDTO memberDTO)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setMemeberAdd(memberDTO);
-		mv.setViewName("redirect:../");
+		mv.setViewName("redirect:./");
 		return mv;
 		
 	}

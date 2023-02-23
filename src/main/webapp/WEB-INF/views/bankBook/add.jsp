@@ -35,11 +35,19 @@
 			  <textarea name="bookDetail" class="form-control" id="bookDetail" placeholder="설명 입력" rows="7"></textarea>
 			</div>
 			
-			<div class="mb-3">
-			  <label for="files" class="form-label">Image</label>
-			  <input type="file" class="form-control" id="files" name="pic">
+			<div id="fileList">
+				<button id="fileAdd" type="button">ADD</button>
+				
+				
+
+				<!-- <div class="mb-3">
+				  <label for="files" class="form-label">Image</label>
+				  <input type="file" class="form-control" id="files" name="pic">
+				</div> -->
+				
 			</div>
-			
+
+
 			
 				
 <!-- 	
@@ -71,6 +79,11 @@
 		</form>
 	</div>
 </div>	
+<script>
+	setMax(3);
+	setParam('f');
+</script>
+<script src="/resources/js/filemanager.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,52 +9,54 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>
-	<h1>MemeberJoin</h1>
-	<div class="col-6">
-		<form action="./memberJoin" method="post">
-			
-			<!--<input type="text" name="ID" ><br>-->
-            <div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label">id</label>
-				<input type="text" class="form-control" id="id" placeholder="아이디" name="ID">
-			</div>
-			
-			
-			<!--input type="password" name="password" ><br>-->
-
-			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label">pw</label>
-				<input type="password" class="form-control" id="password" placeholder="패스워드" name="password">
-			</div>
-			
-			<!--<input type= "text" name="name" ><br>-->
-
-			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label">name</label>
-				<input type="text" class="form-control" id="name" placeholder="이름" name="name">
-			</div>
-			
-			
-			<!--<input type="tel" name="tel" ><br>-->
-			
-			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label">phone</label>
-				<input type="tel" class="form-control" id="tel" placeholder="번호" name="tel">
-			</div>
-
-			
-			<!--<input type="email" name="email" ><br>-->
-			
-			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label">email</label>
-				<input type="email" class="form-control" id="email" placeholder="이메일" name="email">
-			</div>
-			
-			<button type="submit">등록</button>
-		</form>
-		
+<c:import url="../template/header.jsp"></c:import>
+<div class="container-fluid my-5">
+	<div class="row justify-content-center">
+		<h1 class="col-md-6 text-center fw-bold">MemberJoin Page</h1>
 	</div>
-	<c:import url="../template/common_js.jsp"></c:import>
+	<div class = "row justify-content-center">
+		<form class="col-md-6" id="frm" action="./memberAdd" method="post">
+		<div class="mb-3">
+			<label for="id" class="form-label fw-bold">아이디</label> 
+			<input type="text" name="id" class="form-control" id="id" placeholder="아이디 입력">
+			<div id="idResult"></div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="pw" class="form-label fw-bold">비밀번호</label> 
+			<input type="password" name="pw" class="form-control" id="pw" placeholder="비밀번호 입력">
+			<div id="pwResult"></div>
+		</div>
+
+		<div class="mb-3">
+			<label for="pw" class="form-label fw-bold">비밀번호</label> 
+			<input type="password" name="pw" class="form-control" id="pwCheck" placeholder="비밀번호 입력">
+			<div id="pwCheckResult"></div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="name" class="form-label fw-bold">이름</label> 
+			<input type="text" name="name" class="form-control" id="name" placeholder="이름 입력">
+		</div>
+		
+		<div class="mb-3">
+			<label for="phone" class="form-label fw-bold">전화번호</label> 
+			<input type="tel" name="phone" class="form-control" id="phone" placeholder="010-OOOO-OOOO">
+		</div>
+		
+		<div class="mb-3">
+			<label for="email" class="form-label fw-bold ">이메일</label> 
+			<input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com">
+		</div>
+
+		
+		<div class="mb-3">
+				<button class="btn btn-outline-success fw-bold" id="btn" type="button">등록</button> 
+		</div>
+		</form>
+	</div>
+</div>
+<script src="/resources/js/memberJoin.js"></script>
+<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
