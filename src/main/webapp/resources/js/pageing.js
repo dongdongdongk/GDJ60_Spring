@@ -1,7 +1,19 @@
 const pl = document.getElementsByClassName("page-link");
-const serchForm = document.getElementById("serchForm");
-const page = document.getElementById
-for(let p of p1) {
-    
+const searchForm = document.getElementById("searchForm");
+const page = document.getElementById("page");
 
+//for
+//for of   -- for(꺼낸타입명 변수명 : Collection)
+
+for(let p of pl){
+    p.addEventListener("click", function(e){
+       let v = p.getAttribute('data-board-page')
+       page.value=v; 
+       searchForm.submit();
+    })
+}
+
+let data='';
+function setData(d){
+    data=d;
 }

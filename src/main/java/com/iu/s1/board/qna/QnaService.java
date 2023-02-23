@@ -2,35 +2,26 @@ package com.iu.s1.board.qna;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.iu.s1.board.BbsDAO;
 import com.iu.s1.board.BbsDTO;
-import com.iu.s1.board.BoardDAO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardService;
 import com.iu.s1.util.Pager;
 
+@Service
+public class QnaService implements BoardService {
+	
+	@Autowired
+	private BbsDAO qnaDAO;
 
-	@Repository
-	public class QnaDAO implements BoardDAO {
-	
-	private SqlSession sqlSession;
-	
-	private final String NAMESPACE = "com.iu.s1.board.qna.QnaDAO.";
-	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Long getTotalCount(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		pager.makeRow();
+		pager.makeNum(qnaDAO.getTotalCount(pager));
+		return qnaDAO.getBoardList(pager);
 	}
 
 	@Override
@@ -57,4 +48,6 @@ import com.iu.s1.util.Pager;
 		return null;
 	}
 
+	
+	
 }
