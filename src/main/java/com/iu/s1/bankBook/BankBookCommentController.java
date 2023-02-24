@@ -13,22 +13,22 @@ import com.iu.s1.board.BbsService;
 import com.iu.s1.util.Pager;
 
 @Controller
-@RequestMapping
+@RequestMapping("/bankBookComment/*")
 public class BankBookCommentController {
-
-	@Autowired
-	private BbsService BankBookCommentService;
 	
-	@RequestMapping(value = "list",method =  RequestMethod.GET)
-	public ModelAndView getBoardList(Pager pager) throws Exception {
+	@Autowired
+	private BbsService bankBookCommentService;
+	
+	@RequestMapping(value="list", method=RequestMethod.GET)
+	public ModelAndView getBoardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<BbsDTO> ar = bankBookCommentService.getBoardList(pager);
 		
-		List<BbsDTO> ar =BankBookCommentService.getBoardList(pager);
-		
-		mv.addObject("list", ar);
+		mv.addObject("list",ar);
 		mv.setViewName("board/list");
-		return mv;
 		
+		//kind,search,booknum,num을 받음
+		return mv;
 	}
 	
 }

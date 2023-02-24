@@ -37,8 +37,6 @@
 			
 			<div id="fileList">
 				<button id="fileAdd" type="button">ADD</button>
-				
-				
 
 				<!-- <div class="mb-3">
 				  <label for="files" class="form-label">Image</label>

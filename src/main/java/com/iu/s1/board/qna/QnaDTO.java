@@ -3,11 +3,9 @@ package com.iu.s1.board.qna;
 import com.iu.s1.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO {
-
 	private Long ref;
 	private Long step;
 	private Long depth;
-	
 	public Long getRef() {
 		return ref;
 	}
@@ -26,6 +24,4 @@ public class QnaDTO extends BoardDTO {
 	public void setDepth(Long depth) {
 		this.depth = depth;
 	}
-	
-	
 }
