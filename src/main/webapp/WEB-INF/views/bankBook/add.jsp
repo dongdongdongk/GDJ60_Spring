@@ -36,20 +36,17 @@
 			</div>
 			
 			<div id="fileList">
-				<button id="fileAdd" type="button">ADD</button>
-
 				<!-- <div class="mb-3">
-				  <label for="files" class="form-label">Image</label>
-				  <input type="file" class="form-control" id="files" name="pic">
+				<label for="files" class="form-label">Image</label>
+				<input type="file" class="form-control" id="files" name="pic">
 				</div> -->
-				
+				<button type="button" id="fileAdd">ADD</button>
 			</div>
-
-
+			
 			
 				
 <!-- 	
-			<div class="mb-3">
+			<div class="mb-3"> ???
 				<label class="form-label">판매여부</label>
 				<div class="form-check">
 				  <input class="form-check-input" checked type="radio" name="bookSale" id="bookSale1" value="1">
@@ -76,12 +73,13 @@
 		
 		</form>
 	</div>
-</div>	
+</div>
+
+<script src="../resources/js/fileManager.js"></script>
 <script>
 	setMax(3);
-	setParam('f');
+	// setParam('f');
 </script>
-<script src="/resources/js/filemanager.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

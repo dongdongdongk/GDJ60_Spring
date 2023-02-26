@@ -1,32 +1,24 @@
-const add = document.getElementById("add");
+const add= document.getElementById("add");
 const list = document.getElementById("list");
 
 
-
-add.addEventListener('click',function(){
+add.addEventListener('click', function(){
     //<li>d</li>
+    //<li><button>click</button></li>
     let li = document.createElement('li');
-    let button = document.createElement('button');
+    let button = document.createElement("button")
     let text = document.createTextNode('click');
-    //attr 에 속성을(class)추가해주고 
     let attr = document.createAttribute("class");
-    attr.value = 'btn bg'; //클래스에 한번에 여러개 넣을수 있는 
-    //attr.value=attr.value + "bg";
-    
-    //attr 에 btn 을 넣어준것
+    attr.value='btn';//'btn bg';
+    attr.value=attr.value+" bg";
+
     button.setAttributeNode(attr);
-    
-    
-    
-    
-    //<li><button>click</button></i>
+
     button.appendChild(text);
     li.appendChild(button);
-   // list.append(li);
 
-  // list.prepend(li); //위에다 추가 
+    //list.append(li);
+    //list.prepend(li);
     //list.before(li);
     list.after(li);
-
-   
 });

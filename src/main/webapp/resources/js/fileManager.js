@@ -5,7 +5,7 @@ const fileAdd = document.getElementById("fileAdd");
 const fileList = document.getElementById("fileList");
 
 let count=0;
-let max=0;
+let max=1;
 let param='pic';
 
 function setParam(p){
