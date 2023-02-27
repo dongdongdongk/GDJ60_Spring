@@ -1,6 +1,9 @@
 package com.iu.s1.board.qna;
 
+import java.util.List;
+
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardFileDTO;
 
 public class QnaDTO extends BoardDTO {
 	private Long ref;
@@ -23,5 +26,16 @@ public class QnaDTO extends BoardDTO {
 	}
 	public void setDepth(Long depth) {
 		this.depth = depth;
+	}
+	
+	private List<BoardFileDTO> boardFileDTOs;
+
+
+
+	public List<BoardFileDTO> getBoardFileDTOs() {
+		return boardFileDTOs;
+	}
+	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
+		this.boardFileDTOs = boardFileDTOs;
 	}
 }

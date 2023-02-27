@@ -13,11 +13,9 @@ import com.iu.s1.util.Pager;
 
 @Repository
 public class NoticeDAO implements BoardDAO {
-	
 	@Autowired
 	private SqlSession sqlSession;
-	
-	private final String NAMESPACE="com.iu.s1.board.notice.NoticeDAO.";
+	private final String NAMESPACE = "com.iu.s1.board.notice.NoticeDAO.";
 	
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
@@ -52,7 +50,7 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE + "getBoardDetail",boardDTO);
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", boardDTO);
 	}
 
 }

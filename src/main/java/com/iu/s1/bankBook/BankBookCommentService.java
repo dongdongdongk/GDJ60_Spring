@@ -9,15 +9,13 @@ import com.iu.s1.board.BbsDAO;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BbsService;
 import com.iu.s1.util.Pager;
-
 @Service
 public class BankBookCommentService implements BbsService {
-	//detail 제외한 모든 것
 	
 	@Autowired
 	private BbsDAO bankBookCommentDAO;
 	//private BankBookCommentDAO bankBookCommentDAO;
-	
+
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		pager.makeRow();
@@ -46,4 +44,5 @@ public class BankBookCommentService implements BbsService {
 	}
 	
 	
+
 }

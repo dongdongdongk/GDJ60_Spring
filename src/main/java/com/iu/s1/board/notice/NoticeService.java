@@ -12,12 +12,11 @@ import com.iu.s1.board.BoardService;
 import com.iu.s1.util.Pager;
 
 @Service
-public class NoticeService implements BoardService{
+public class NoticeService implements BoardService {
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
-	//bean의 이름으로 찾는다 (클래스를 상위클래스인 BbsDAO로 선언)	
-	
+
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		pager.makeRow();
@@ -29,7 +28,7 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return noticeDAO.setBoardAdd(bbsDTO);
 	}
 
@@ -50,5 +49,5 @@ public class NoticeService implements BoardService{
 		// TODO Auto-generated method stub
 		return noticeDAO.getBoardDetail(boardDTO);
 	}
-	
+
 }

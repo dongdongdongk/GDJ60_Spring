@@ -35,26 +35,13 @@
 			  <textarea name="contents" class="form-control" id="contents" placeholder="내용 입력" rows="7"></textarea>
 			</div>
 			
-			<div id="fileList">
-				<button id="fileAdd" type="button">ADD</button>
-				
-				
+			<div id="fileList" class="my-5">
+<!--  				<div class="input-group mb-3">
+					<input type="file" class="form-control" id="files" name="files">
+					<button type="button" class="btn btn-outline-danger">X</button>
+				</div>  -->
+				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
 			</div>
-
-				 <!--<div class="mb-3">
-				  <label for="files" class="form-label">Image</label>
-				  <input type="file" class="form-control" id="files" name="pic">
-				</div>
-				
-
-
-			<div id="fileList">
-				<div class="mb-3">
-				<label for="files" class="form-label">Image</label>
-				<input type="file" class="form-control" id="files" name="pic">
-				</div>
-				<button type="button" id="fileAdd">ADD</button>
-			</div> -->
 						
 			<div class="mb-3">
 				<button class="my btn btn-danger" type="submit">글쓰기</button>
@@ -64,9 +51,9 @@
 	</div>
 </div>
 
-<script src="/resources/js/fileManger.js"></script>
+<script src="../resources/js/fileManager.js"></script>
 <script>
-	setMax(3);
+	setMax(5);
 	setParam('files');
 </script>
 <c:import url="../template/common_js.jsp"></c:import>

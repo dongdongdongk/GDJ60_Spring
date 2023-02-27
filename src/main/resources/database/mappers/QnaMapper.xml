@@ -2,64 +2,101 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.iu.s1.board.qna.QnaDAO">
-  
-	  <sql id="qnaCondition">
-	  	<where>
-	  		<if test="kind=='title'">
-	  			TITLE LIKE '%' || #{search} || '%'
-	  		</if>
-	  		<if test="kind=='contents'">
-	  			CONTENTS LIKE '%' || #{search} || '%'
-	  		</if>
-	  		<if test="kind=='writer'">
-	  			WRITER LIKE '%'|| #{search} ||'%'
-	  		</if>
-	  	</where>
+
+<mapper namespace="com.iu.s1.board.qna.QnaDAO">
+
+	<sql id="qnaCondition">
+		<where>
+			<if test="kind=='title'">
+				TITLE LIKE '%' || #{search} || '%'
+			</if>
+			<if test="kind=='contents'">
+				CONTENTS LIKE '%' || #{search} || '%'
+			</if>
+			<if test="kind=='writer'">
+				WRITER LIKE '%'|| #{search} ||'%'
+			</if>
+		</where>
 	</sql>
-  
-  	<select id="getTotalCount" resultType="Long" parameterType="Pager">
-  		SELECT COUNT(NUM) FROM QNA
-  		<include refid="qnaCondition"></include>
-  	</select>
-  	
-  	<select id="getBoardList" resultType="QnaDTO" parameterType="Pager">
+	<resultMap type="QnaDTO" id="getBoardDetailResult">
+  		<id column="num" property="num"/>
+  		<result column="title" property="title"/>
+  		<result column="writer" property="writer"/>
+  		<result column="contents" property="contents"/>
+  		<result column="regDate" property="regDate"/>
+  		<result column="hit" property="hit"/>
+  		<result column="depth" property="depth"/>
+
+  		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+  			<id column="fileNum" property="fileNum"/>
+  			<result column="fileName" property="fileName"/>
+  			<result column="oriName" property="oriName"/>
+  		</collection>
+
+  	</resultMap>
+
+	<select id="getTotalCount" resultType="Long"
+		parameterType="Pager">
+		SELECT COUNT(NUM) FROM QNA
+		<include refid="qnaCondition"></include>
+	</select>
+
+	<select id="getBoardList" resultType="QnaDTO"
+		parameterType="Pager">
 		SELECT * FROM
-  		(	
-  			SELECT ROWNUM R, C.* FROM
-  				(	SELECT NUM, WRITER, TITLE, REGDATE, HIT, DEPTH FROM QNA
-					<include refid="qnaCondition"></include>
-					ORDER BY REF DESC, STEP ASC
-				) C
+		(
+		SELECT ROWNUM R, C.* FROM
+		( SELECT NUM, WRITER, TITLE, REGDATE, HIT, DEPTH FROM QNA
+		<include refid="qnaCondition"></include>
+		ORDER BY REF DESC, STEP ASC
+		) C
 		)
-		WHERE R BETWEEN #{startRow} AND #{lastRow} 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	<insert id="setBoardAdd" parameterType="BbsDTO">
+
+	<selectKey keyProperty="num" resultType="Long"
+			order="BEFORE">
+			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
+
+		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF,
+		STEP,DEPTH)
+		VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE,0,#{num},0,0)
+	</insert>
+
+	<select id="getBoardDetail" parameterType="BoardDTO" resultMap="getBoardDetailResult">
+  		SELECT Q.*, QF.*
+		FROM QNA Q
+			 LEFT JOIN
+			 QNAFILES QF
+			 ON(Q.NUM = QF.NUM)
+		WHERE Q.NUM=#{num}	
   	</select>
-  	<insert id="setBoardAdd" parameterType="BbsDTO">
-  	
-  	<selectKey keyProperty="num" resultType="Long" order="BEFORE">
-  		SELECT QNA_SEQ.NEXTVAL FROM DUAL
-  	</selectKey>
-  	
-  	INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP,DEPTH)
-  	VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE,0,#{num},0,0)
+
+	<update id="setStepUpdate" parameterType="QnaDTO">
+		UPDATE QNA SET STEP = STEP + 1
+		WHERE REF = #{ref} AND STEP > #{step}
+
+	</update>
+	<insert id="setReplyAdd" parameterType="QnaDTO">
+		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF,
+		STEP,DEPTH)
+		VALUES(QNA_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE,0,#{ref},#{step},#{depth})
+
+	</insert>
+	
+	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
+  		INSERT INTO QNAFILES (FILENUM, NUM, FILENAME, ORINAME)
+  		VALUES(QNA_SEQ.NEXTVAL ,#{num}, #{fileName}, #{oriName})
   	</insert>
   	
-  	<select id="getBoardDetail" parameterType="BoardDTO" resultType="QnaDTO">
-  	SELECT *
-  	FROM QNA
-  	WHERE NUM=#{num}
-  </select>
-  
-  <update id="setStepUpdate" parameterType="QnaDTO">
-  	UPDATE QNA SET STEP = STEP + 1
-  	WHERE REF = #{ref} AND STEP > #{step}
-  
-  </update>
-  	<insert id="setReplyAdd" parameterType="QnaDTO">
-	  	INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP,DEPTH)
-	  	VALUES(QNA_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE,0,#{ref},#{step},#{depth})
-  	
-  	</insert>
- 	
-  </mapper>
+  	<delete id="setBoardDelete" parameterType="BbsDTO">
+  		DELETE QNA WHERE NUM=#{num}
+  	</delete>
+
+  	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
+  		SELECT * FROM QNAFILES WHERE NUM=#{num}
+  	</select>
+
+</mapper>
