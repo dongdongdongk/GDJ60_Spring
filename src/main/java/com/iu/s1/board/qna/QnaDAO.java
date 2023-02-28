@@ -14,6 +14,12 @@ import com.iu.s1.util.Pager;
 @Repository
 public class QnaDAO implements BoardDAO {
 	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + "getBoardFileDetail",boardFileDTO);
+	}
+
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -74,5 +80,5 @@ public class QnaDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardFileList", bbsDTO);
 	}
-
+	
 }
