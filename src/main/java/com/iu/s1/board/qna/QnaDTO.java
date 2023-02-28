@@ -9,6 +9,8 @@ public class QnaDTO extends BoardDTO {
 	private Long ref;
 	private Long step;
 	private Long depth;
+	private List<BoardFileDTO> boardFileDTOs;
+	
 	public Long getRef() {
 		return ref;
 	}
@@ -28,7 +30,6 @@ public class QnaDTO extends BoardDTO {
 		this.depth = depth;
 	}
 	
-	private List<BoardFileDTO> boardFileDTOs;
 
 
 

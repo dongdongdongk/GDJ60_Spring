@@ -21,8 +21,8 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return noticeDAO.getBoardFileDetail(boardFileDTO);
 	}
 
 	@Autowired

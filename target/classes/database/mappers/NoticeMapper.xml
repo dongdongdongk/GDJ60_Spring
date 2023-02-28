@@ -6,7 +6,9 @@
   <mapper namespace="com.iu.s1.board.notice.NoticeDAO">
   <sql id="commentCondition">
   <trim prefix="where" suffixOverrides="and">
-		NOTICENUM = #{noticeNum} AND
+		<if test="kind == 'title'">
+			TITLE LIKE '%'||#{search}||'%'
+		</if>
 		
 		<if test="kind == 'contents'">
 			 CONTENTS LIKE '%'||#{search}||'%'
@@ -15,6 +17,7 @@
 		<if test="kind == 'writer'">
 			WRITER LIKE '%'||#{search}||'%'
 		</if>
+		
 	</trim>  
   </sql>
   
@@ -38,11 +41,29 @@
   	WHERE R BETWEEN #{startRow} AND #{lastRow}
   </select>
   
-  <select id="getBoardDetail" parameterType="BoardDTO" resultType="NoticeDTO">
+  <select id="getBoardDetail" parameterType="BoardDTO" resultMap="getBoardDetailResult">
   	SELECT *
-  	WHERE NUM=#{num}
   	FROM NOTICE
+  	WHERE NUM=#{num}
   </select>
+  
+  <resultMap type="NoticeDTO" id="getBoardDetailResult">
+  		<id column="num" property="num"/>
+  		<result column="title" property="title"/>
+  		<result column="writer" property="writer"/>
+  		<result column="contents" property="contents"/>
+  		<result column="regDate" property="regDate"/>
+  		<result column="hit" property="hit"/>
+
+
+  		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+  			<id column="fileNum" property="fileNum"/>
+  			<result column="fileName" property="fileName"/>
+  			<result column="oriName" property="oriName"/>
+  		</collection>
+
+  	</resultMap>
+  
   
   
   <insert id="setBoardAdd" parameterType="BbsDTO">
@@ -55,4 +76,8 @@
   	INSERT INTO NOTICE (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT)
   	VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer, SYSDATE,0)
   	</insert>
+  	
+  	<select id="getBoardFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+  		SELECT * FROM NOTICEFILES WHERE FILENUM=#{fileNum}
+  	</select>
   </mapper>
