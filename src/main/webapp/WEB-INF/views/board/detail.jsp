@@ -25,7 +25,7 @@
 			<a href="./reply?num=${dto.num}" class="btn btn-danger">답글</a>
 		</c:if>
 		
-		
+		<%-- <c:if test="${member.id==dto.writer}"> --%>
 		<div>
 			<form action="./update" id="frm">
 				<input type="hidden" name="num" value="${dto.num}">
@@ -33,6 +33,7 @@
 				<button id="delete" type="button" class="btn btn-info">DELETE</button>
 			</form>
 		</div>
+		<%-- </c:if> --%>
 		
 	</div>
 </div>

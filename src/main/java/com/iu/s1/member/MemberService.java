@@ -38,6 +38,7 @@ public class MemberService {
 		//result id 와 일치하는 모든 정보 
 		if(result != null && memberDTO.getPw().equals(result.getPw())) {
 			memberDTO.setPw(null);
+			memberDTO.setRoleDTO(result.getRoleDTO());
 			return memberDTO;
 		}else { 
 			return null;

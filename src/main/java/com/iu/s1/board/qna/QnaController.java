@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -103,7 +104,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@PostMapping("delete")
+	@GetMapping("delete")
 	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/result");
@@ -128,6 +129,17 @@ public class QnaController {
 		boardFileDTO = qnaService.getBoardFileDetail(boardFileDTO);
 		mv.addObject("boardFile",boardFileDTO);
 		mv.setViewName("fileDownView");
+		
+		return mv;
+	}
+	
+	@GetMapping("update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		boardDTO  = qnaService.getBoardDetail(boardDTO);
+		
+		mv.addObject("dto",boardDTO);
+		mv.setViewName("board/update");
 		
 		return mv;
 	}
