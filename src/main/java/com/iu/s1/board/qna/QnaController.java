@@ -8,6 +8,7 @@ import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,7 +42,6 @@ public class QnaController {
 	public ModelAndView getBoardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<BbsDTO> ar = qnaService.getBoardList(pager);
-		
 		mv.addObject("list", ar);
 		mv.setViewName("board/list");
 		return mv;
@@ -143,4 +143,23 @@ public class QnaController {
 		
 		return mv;
 	}
+	
+	
+	//--------------------------------------------------------------------------------------------------------------
+//	@ExceptionHandler(NullPointerException.class)
+//	public ModelAndView fixExcption() { 
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("message", "잘못된 접근입니다<br>관리자에게 문의 하세요");
+//		mv.setViewName("common/error_500");
+//		return mv;
+//	}
+//	
+//	@ExceptionHandler(Exception.class)
+//	public ModelAndView fix2Excption() { 
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("message", "잘못된 접근입니다<br>관리자에게 문의 하세요");
+//		mv.setViewName("common/error_500");
+//		return mv;
+//	}
+	
 }
