@@ -11,29 +11,30 @@ import com.iu.s1.board.BbsDTO;
 import com.iu.s1.util.Pager;
 
 @Repository
-public class BankBookCommentDAO implements BbsDAO{
+public class BankBookCommentDAO implements BbsDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private final String NAMESPACE="com.iu.s1.bankBook.BankBookCommentDAO.";
+	private final String NAMESPACE = "com.iu.s1.bankBook.BankBookCommentDAO.";
+	
 	
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"getTotalCount",pager);
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
+		return sqlSession.selectList(NAMESPACE+"getBoardList", pager);
 	}
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
 
 	@Override
@@ -48,4 +49,6 @@ public class BankBookCommentDAO implements BbsDAO{
 		return 0;
 	}
 	
+	
+
 }

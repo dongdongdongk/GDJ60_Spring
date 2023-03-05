@@ -27,11 +27,15 @@ public class BankBookCommentService implements BbsService {
 		
 		return bankBookCommentDAO.getBoardList(pager);
 	}
-	
-	
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
+		// TODO Auto-generated method stub
+		return bankBookCommentDAO.setBoardAdd(bbsDTO);
+	}
+
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -41,15 +45,6 @@ public class BankBookCommentService implements BbsService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
-	@Override
-	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
 	
 	
 
