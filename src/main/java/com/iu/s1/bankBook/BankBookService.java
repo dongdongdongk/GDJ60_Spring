@@ -25,15 +25,21 @@ public class BankBookService {
 	@Autowired
 	private FileManager fileManager;
 	
+
+	
+	
 	public List<BankBookDTO> getBankBookList(Pager pager)throws Exception{
 		
-		Long totalCount = bankBookDAO.getBankBookCount(pager);//30
+		Long totalCount = bankBookDAO.getBankBookCount(pager);
 		
 		pager.makeNum(totalCount);
 		pager.makeRow();
 		
 		return bankBookDAO.getBankBookList(pager);
 	}
+	
+	
+	
 	
 	public BankBookDTO getBankBookDetail(BankBookDTO bankBookDTO)throws Exception{
 		return bankBookDAO.getBankBookDetail(bankBookDTO);

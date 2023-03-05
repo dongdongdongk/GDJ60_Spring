@@ -10,7 +10,7 @@ public interface BbsDAO {
 	public Long getTotalCount(Pager pager) throws Exception;
 	
 	//list
-	public List<BbsDTO> getBoardList(Pager pager) throws Exception;
+	public List<BbsDTO> getBoardList(Pager pager) throws Exception; //BbsDTO 최상단 부모클래스로 
 	
 	//insert(add)
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception;
