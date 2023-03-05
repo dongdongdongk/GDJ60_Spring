@@ -25,6 +25,14 @@
 	</c:if>
 	<a href="./update?bookNum=${dto.bookNum}">상품수정</a>
 	<a href="./list">목록으로</a>
+		
+<div class="mb-3">
+  <textarea class="form-control" id="replyContents" rows="3"></textarea>
+</div>
+<div>
+	<button type="button" class="btn btn-primary" id="replyAdd" data-book-bookNum="$">댓글작성</button>
+</div>
+	
 <c:import url="../template/common_js.jsp"></c:import>	
 </body>
 </html>

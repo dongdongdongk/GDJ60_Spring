@@ -95,4 +95,16 @@ public class NoticeController {
 		
 	}
 	
+	@GetMapping("listTop")
+	public ModelAndView getlistTop5(Pager pager) throws Exception {
+		
+		ModelAndView mv = new ModelAndView();
+		pager.setPerPage(5L);
+		List<BbsDTO> ar = noticeService.getBoardList(pager);
+		
+		mv.addObject("list", ar);
+		mv.setViewName("common/noticeResult");
+		return mv;
+	}
+	
 }
