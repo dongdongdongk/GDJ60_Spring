@@ -11,7 +11,9 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-
+ <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    
 <div class="container-fluid">
 
 	<div class="row justify-content-center my-4">
@@ -52,10 +54,11 @@
 </div>
 
 <script src="../resources/js/fileManager.js"></script>
+<c:import url="../template/common_js.jsp"></c:import>
 <script>
 	setMax(5);
-	setParam('files');
+	$("#contents").summernote();
+	//setParam('files');
 </script>
-<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

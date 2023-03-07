@@ -8,15 +8,47 @@ const closeModal = document.getElementById('closeModal');
 
 
 
+// //댓글 등록
+// replyAdd.addEventListener("click", function(){
+//     console.log("num : ", replyAdd.getAttribute('data-book-bookNum'));
+
+//     //JS에서 사용할 가성의 Form 태그 생성 
+//     const form = new FormData(); // <form></form> 
+//     form.append("contents",replyContents.value); //<form><input type="text" name = "contents" value="dfds"></form>
+//     form.append("bookNum", replyAdd.getAttribute("data-book-bookNum"))
+    
+//     fetch('../bankBookComment/add', {
+//         method:'POST',
+//         headers:{'Content-type':"application/x-www-form-urlencoded"},
+//         body:form,
+//     }).then((response)=> response.st)
+//     .then((res)=>{
+//         if(res.trim()==1){
+//             alert('댓글이 등록 되었습니다')
+//             replyContents.value="";
+//             getList(1);            
+//         }else {
+//             alert('댓글 등록에 실패 했습니다')
+//         }
+//     }).catch(()=>{
+//         console.log("error 발생");
+//     });
+    
+// })
+
+    //jquey
+
+    
 //댓글 등록
 replyAdd.addEventListener("click", function(){
+    
     console.log("num : ", replyAdd.getAttribute('data-book-bookNum'));
 
     //JS에서 사용할 가성의 Form 태그 생성 
     const form = new FormData(); // <form></form> 
     form.append("contents",replyContents.value); //<form><input type="text" name = "contents" value="dfds"></form>
     form.append("bookNum", replyAdd.getAttribute("data-book-bookNum"))
-
+    
     fetch('../bankBookComment/add', {
         method:'POST',
         headers:{'Content-type':"application/x-www-form-urlencoded"},
@@ -33,6 +65,27 @@ replyAdd.addEventListener("click", function(){
     }).catch(()=>{
         console.log("error 발생");
     });
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // let xhttp = new XMLHttpRequest();
@@ -56,7 +109,6 @@ replyAdd.addEventListener("click", function(){
     //     }
     // })
 
-})
 
 
 // //list
@@ -140,14 +192,13 @@ commentListResult.addEventListener("click", function(e){
 
 //delete
 commentListResult.addEventListener("click", function(e){
-    let del = e.target;
-    if(del.classList.contains("del")){
-        fetch("../bankBookComment/delete", {
-            method:'POST',
-            headers:{
+
+    fetch("../bankBookComment/delete", {
+         method:'POST',
+         headers:{
                 "Content-type":"application/x-www-form-urlencoded"
-            },
-            body:"num="+del.getAttribute("data-comment-num")
+         },
+         body:"num="+$(this).attr("data-comment-num")
             //응답객체에서 Data 추출
         }).then((response)=>{return response.text()}) //then(function(response){return response.text()})   
             //추출한 Data 사용
@@ -155,10 +206,20 @@ commentListResult.addEventListener("click", function(e){
             if(res.trim()>0){
                 alert('댓글이 삭제 되었습니다');
                 getList(1);
-            }else {
-                alert('삭제 실패');
-            }
-          })
+         }else {
+             alert('삭제 실패');
+         }
+     })
+
+//---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
         //   .catch(()=>{
         //         alert('에러 발생');
         //   });
@@ -182,7 +243,7 @@ commentListResult.addEventListener("click", function(e){
                 
         //     }        
         // })
-    }
+    
 
     e.preventDefault();
     
@@ -254,5 +315,23 @@ contentsConfirm.addEventListener("click", function(){
     
 })
 
+//TEST 후 삭제할 영역
+    //1.선택 
+    //const b1 = document.getElementById("b1")
+    //const b1 = document.querySelector("#b1")
+    //b1.addEventListener('click',function(){})
+    // document.getElementById("t1").value
+    //Jquery
+    $("#b1").click(()=>{
+       $("#t1").get 
+    });
+
+    $("#t1").blur(()=>{
+
+    })
 
 
+
+
+
+///////////////////////////
