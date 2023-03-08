@@ -7,13 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    
+
 <div class="container-fluid">
 
 	<div class="row justify-content-center my-4">
@@ -24,7 +24,7 @@
 		<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 			  <label for="writer" class="form-label">작성자</label>
-			  <input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly="readonly">
+			  <input type="text" name="writer" readonly value="${member.id}" class="form-control" id="writer">
 			</div>
 			
 			<div class="mb-3">
@@ -43,6 +43,7 @@
 					<button type="button" class="btn btn-outline-danger">X</button>
 				</div>  -->
 				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
+
 			</div>
 						
 			<div class="mb-3">
@@ -53,12 +54,12 @@
 	</div>
 </div>
 
-<script src="../resources/js/fileManager.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
+<script src="../resources/js/fileManger.js"></script>
 <script>
+	setParam('addFiles');
 	setMax(5);
 	$("#contents").summernote();
-	//setParam('files');
 </script>
 </body>
 </html>

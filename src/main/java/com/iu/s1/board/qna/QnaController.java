@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +19,7 @@ import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BbsService;
 import com.iu.s1.board.BoardDTO;
 import com.iu.s1.board.BoardFileDTO;
+import com.iu.s1.board.BoardService;
 import com.iu.s1.board.notice.NoticeDTO;
 import com.iu.s1.util.Pager;
 
@@ -35,131 +34,136 @@ public class QnaController {
 	public String getBoardName() {
 		return "qna";
 	}
-	//공통적으로 보낼 데이터 타입을 리턴타입으로 -> notice,qna라는 문자열 보낼 것이다
-	//속성과 값을 보내주기 때문에 model attribute, 값은 return으로 보내주기 때문에 속성명을 어노테이션에 적어준다
 	
 	@RequestMapping(value="list", method = RequestMethod.GET)
-	public ModelAndView getBoardList(Pager pager) throws Exception{
+	public ModelAndView getBoardList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<BbsDTO> ar = qnaService.getBoardList(pager);
 		mv.addObject("list", ar);
 		mv.setViewName("board/list");
 		return mv;
 	}
+	
 	@GetMapping("add")
-	public ModelAndView setBoardAdd() throws Exception {
+	public ModelAndView setBoardAdd()throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/add");
 		return mv;
 	}
 	
 	@PostMapping("add")
-	//메소드명을 명시하는 @PostMapping이 나옴
-	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile [] files, HttpSession session)throws Exception{
+	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile [] addFiles, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setBoardAdd(qnaDTO, files, session);
+		int result = qnaService.setBoardAdd(qnaDTO, addFiles, session);
 		
-		String message = "등록 실패";
+		String message="등록 실패";
 		
 		if(result>0) {
-			message = "글이 등록 되었습니다";		
+			message = "글이 등록 되었습니다";
 		}
+		
 		mv.addObject("result", message);
-		mv.addObject("url","list");
+		mv.addObject("url", "./list");
 		mv.setViewName("common/result");
 		return mv;
+		
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getDetial(QnaDTO qnaDTO) throws Exception {
+	public ModelAndView getBoardDetail(QnaDTO qnaDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		BoardDTO boardDTO  = qnaService.getBoardDetail(qnaDTO);
-		mv.addObject("dto",boardDTO);
+		BoardDTO boardDTO = qnaService.getBoardDetail(qnaDTO);
+		mv.addObject("dto", boardDTO);
 		mv.setViewName("board/detail");
-		return mv;
-		
-	}
-	@GetMapping("reply")
-	public ModelAndView setReplyAdd(BoardDTO boardDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("board/reply");
-		return mv;
-	}
-	@PostMapping("reply")
-	public ModelAndView setReplyAdd(QnaDTO qnaDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();		
-		mv.setViewName("board/reply");
-		int result = qnaService.setReplyAdd(qnaDTO);
-		
-		String message = "등록 실패";
-		
-		if(result>0) {
-			message = "글이 등록 되었습니다";		
-		}
-		
-		mv.setViewName("common/result");
-		mv.addObject("result",message);
-		mv.addObject("url","./detail?num="+qnaDTO.getNum());
 		return mv;
 	}
 	
-	@GetMapping("delete")
+	@GetMapping("reply")
+	public ModelAndView setReplyAdd(BoardDTO qnaDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/reply");
+		return mv;
+	}
+	
+	@PostMapping("reply")
+	public ModelAndView setReplyAdd(QnaDTO qnaDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int result = qnaService.setReplyAdd(qnaDTO);
+		
+		String message="등록 실패";
+		
+		if(result>0) {
+			message = "글이 등록 되었습니다";
+		}
+		
+		mv.setViewName("common/result");
+		mv.addObject("result", message);
+		mv.addObject("url", "./detail?num="+qnaDTO.getNum());
+		return mv;
+	}
+	
+	@PostMapping("delete")
 	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/result");
-
+		
 		int result = qnaService.setBoardDelete(bbsDTO, session);
-
+		
 		String message="삭제 실패";
-
+		
 		if(result>0) {
 			message="삭제 성공";
 		}
-
+		
 		mv.addObject("result", message);
 		mv.addObject("url", "./list");
-
-
+		
+		
 		return mv;
 	}
+	
 	@GetMapping("fileDown")
 	public ModelAndView getFileDown(BoardFileDTO boardFileDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boardFileDTO = qnaService.getBoardFileDetail(boardFileDTO);
-		mv.addObject("boardFile",boardFileDTO);
+		
+		mv.addObject("boardFile", boardFileDTO);
 		mv.setViewName("fileDownView");
 		
 		return mv;
 	}
 	
 	@GetMapping("update")
-	public ModelAndView setBoardUpdate(BoardDTO boardDTO) throws Exception {
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boardDTO  = qnaService.getBoardDetail(boardDTO);
+		boardDTO = qnaService.getBoardDetail(boardDTO);
 		
-		mv.addObject("dto",boardDTO);
+		mv.addObject("dto", boardDTO);
+		
 		mv.setViewName("board/update");
 		
 		return mv;
 	}
 	
+	@PostMapping("update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO, MultipartFile [] addFiles, HttpSession session, Long [] fileNum)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setBoardUpdate(boardDTO, addFiles, session, fileNum);
+		
+		mv.setViewName("common/result");
+		mv.addObject("result", "수정 성공");
+		mv.addObject("url", "./list");
+		
+		return mv;
+	}
 	
-	//--------------------------------------------------------------------------------------------------------------
-//	@ExceptionHandler(NullPointerException.class)
-//	public ModelAndView fixExcption() { 
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("message", "잘못된 접근입니다<br>관리자에게 문의 하세요");
-//		mv.setViewName("common/error_500");
-//		return mv;
-//	}
-//	
-//	@ExceptionHandler(Exception.class)
-//	public ModelAndView fix2Excption() { 
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("message", "잘못된 접근입니다<br>관리자에게 문의 하세요");
-//		mv.setViewName("common/error_500");
-//		return mv;
-//	}
+	//-----------------------------------------------
 	
+
+	
+	
+	
+
 }

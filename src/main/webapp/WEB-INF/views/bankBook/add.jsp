@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
-
+<!-- include summernote css/js-->
+<link href="summernote-bs5.css" rel="stylesheet">
+<script src="summernote-bs5.js"></script>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
 <div class="container-fluid">
-
 	<div class="row justify-content-center my-4">
 		<h1 class="col-md-7 text-center">상품 등록 Page</h1>
 	</div>
@@ -36,17 +37,17 @@
 			</div>
 			
 			<div id="fileList">
-				 <div class="mb-3">
+				<!-- <div class="mb-3">
 				<label for="files" class="form-label">Image</label>
 				<input type="file" class="form-control" id="files" name="pic">
-				</div> 
+				</div> -->
 				<button type="button" id="fileAdd">ADD</button>
 			</div>
 			
 			
 				
 <!-- 	
-			<div class="mb-3"> 
+			<div class="mb-3">
 				<label class="form-label">판매여부</label>
 				<div class="form-check">
 				  <input class="form-check-input" checked type="radio" name="bookSale" id="bookSale1" value="1">
@@ -75,11 +76,12 @@
 	</div>
 </div>
 
-<script src="../resources/js/fileManager.js"></script>
+<script src="../resources/js/fileManger.js"></script>
+<c:import url="../template/common_js.jsp"></c:import>
 <script>
-	setMax(5);
+	setMax(3);
+	$("#bookDetail").summernote();
 	// setParam('f');
 </script>
-<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

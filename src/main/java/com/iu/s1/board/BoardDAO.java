@@ -1,7 +1,5 @@
 package com.iu.s1.board;
-
 import java.util.List;
-
 public interface BoardDAO extends BbsDAO {
 	
 	//list
@@ -17,13 +15,14 @@ public interface BoardDAO extends BbsDAO {
 	//update
 	
 	//delete
-
 	
 	//BoardFileList
-		public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO)throws Exception;
-
+	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO)throws Exception;
+	
 	//BoardFileDetail
-		public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO)throws Exception;
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO)throws Exception;
 
+	//BoardFileDelete
+	public int setBoardFileDelete(Long fileNum)throws Exception;
 
 }
