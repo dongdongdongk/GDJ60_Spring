@@ -21,6 +21,102 @@ function setMax(m){
     max=m;
 }
 
+$(".deleteCheck").click(function(){
+    let result=confirm('파일이 영구 삭제 됩니다')
+    let ch = $(this); 
+    if($(this).prop('checked')){
+
+        if(result){
+            let fileNum = $(this).val();
+           $.ajax({
+                type:'POST' , 
+                url: './boardFileDelete',
+                data:{
+                    fileNum:fileNum //왼쪽 속성의 이름 , 오른쪽 변수 
+                },
+                success:function(response){
+                    if(response.trim() > 0) {
+                        alert("삭제 되었습니다")
+                        //this : ajax 객체 자기 자신
+                        console.log(ch); 
+                        $(ch).parent().parent().remove();
+                        count--;
+                    }else {
+                        alert("삭제실패<br> 관리자 에게 문의 하세요")
+                    }
+                },
+                error:function(){
+
+                }
+
+           })
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+            //ajax DB 삭제 
+            //fetch
+            // GET 방식 
+            // fetch("URL?p=1" , {
+            //     method : "GET"
+            // }).then((response)=>response.text())
+            // .then((res)=>{
+
+            // })
+
+            $.get("URL?p=1", function(response){     
+
+            })
+
+            // POST 방식
+            // fetch("URL", {
+            //     method: "POST" ,
+            //     headers:{
+            //         'Countents-Type':'X ,,,,'
+            //     },
+            //     body: "p=1"
+            //     }).then((response)=>response.text())
+            //  .then((res)=>{
+            // })
+
+            $.post("URL",{p:1}, function(res){
+
+
+            })
+
+
+
+
+
+
+
+
+
+
+        }else {
+            $(this).prop("checked", false);
+        }
+
+    }else {
+        if(count==5){
+            console.log("idx : ", idx);
+            idx--
+            $("#f"+idx).remove();
+            return;
+        }
+        count++;
+    }
+})
+
 $("#fileList").on("click", ".dels", function(e){
     // let id = $(this).attr("data-dels-id");
     // $("#"+id).remove();
